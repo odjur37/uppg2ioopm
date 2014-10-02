@@ -1,10 +1,21 @@
+struct edgedata {
+  unsigned short travel_time;
+  unsigned short bus_line;
+};
+
+unsigned short getWeightFromEdgeData(void *d) {
+  return ((struct edgedata*) d)->travel_time;
+
 typedef struct node{
-  int *busstop;
-  int *time;
-  struct node *next;
+  char *busstop;
+  struct node *connections;
+  struct arch *directions;
 } *Node;
 
-typedef struct arch{
-  int *busnumber;
-  int *traveltime;
-} *Arch;
+void traveltime (Node *start, Node *destination){
+  start->
+
+
+
+};
+
