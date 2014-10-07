@@ -20,9 +20,8 @@ char *istring_mk(const char* str){
   
   char string_length[length];
   strcpy(istring, (string_length + *str));
-  printf("%c",istring[1]);
   
-  return 0;
+  return istring;
 }
 
 void istring_rm(char *str){
