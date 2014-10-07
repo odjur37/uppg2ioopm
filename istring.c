@@ -6,7 +6,7 @@
 */
 
 int main(){
-  char *istring_mk(const char* str) {
+  char *istring_mk(const char* str){
     if (str == NULL){
       return NULL;
     }
@@ -34,7 +34,7 @@ int main(){
     return 0;
   }
   
-  void istring_rm(char *str) {
+  void istring_rm(char *str){
     free(str);
     str = NULL;
   }
@@ -42,7 +42,7 @@ int main(){
   return 0;
 
   
-  char *istring_to_string(const char *str) {
+  char *istring_to_string(const char *str){
     int length = *(int *) (str - sizeof(int));
     char *temp = malloc(length);
     strncpy(temp, str, length);
@@ -52,4 +52,3 @@ int main(){
     return temp;
   }
 }
-
