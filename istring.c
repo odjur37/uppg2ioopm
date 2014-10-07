@@ -19,8 +19,8 @@ char *istring_mk(const char* str){
   length = strlen(str);
   
   char string_length[length];
-  strcpy(string_length, (str + length));
-  printf("%c",string_length[1]);
+  strcpy(istring, (string_length + *str));
+  printf("%c",istring[1]);
   
   return 0;
 }
@@ -45,4 +45,6 @@ char *istring_to_string(const char *str){
 
 
 int main(){
+  istring_mk("Hej!");
+  istring_to_string("Hejsan!!");
 }
