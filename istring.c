@@ -20,7 +20,7 @@ char* istring = malloc(sizeof(int) + strlen(str));
  length = strlen(str);
  char string_length[length];
  strcpy(string_length, (str + length));
- printf("%c",string_length[2]);
+ printf("%c",string_length[1]);
  return 0;
 }
  
