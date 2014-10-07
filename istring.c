@@ -20,8 +20,18 @@ int main(){
     length = strlen(str);
     char string_length[length];
     strcpy(string_length, (str + length));
- printf("%c",string_length[1]);
- return 0;
+    printf("%c",string_length[1]);
+    char* istring = malloc(sizeof(int) + strlen(str));
+    if (istring == NULL){
+      exit(1);
+    }
+ 
+    int length;
+    length = strlen(str);
+    char string_length[length];
+    strcpy(string_length, (str + length));
+    printf("%c",string_length[1]);
+    return 0;
   }
   
   void istring_rm(char *str) {
@@ -30,6 +40,7 @@ int main(){
   }
   istring_mk("Hej");
   return 0;
+
   
   char *istring_to_string(const char *str) {
     int length = *(int *) (str - sizeof(int));
@@ -40,8 +51,5 @@ int main(){
     temp[tempint+1] = '\0';
     return temp;
   }
-  
-  
 }
-
 
