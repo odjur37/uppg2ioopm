@@ -18,19 +18,11 @@ int main(){
     
     int length;
     length = strlen(str);
+
     char string_length[length];
     strcpy(string_length, (str + length));
     printf("%c",string_length[1]);
-    char* istring = malloc(sizeof(int) + strlen(str));
-    if (istring == NULL){
-      exit(1);
-    }
- 
-    int length;
-    length = strlen(str);
-    char string_length[length];
-    strcpy(string_length, (str + length));
-    printf("%c",string_length[1]);
+
     return 0;
   }
   
