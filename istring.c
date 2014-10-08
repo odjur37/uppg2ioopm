@@ -45,9 +45,34 @@ char *istring_to_string(const char *str){
   return temp;
 }
 
+char *istrcpy(char *dst, const char *src){
+  if(dst && src == NULL){
+  }
+  int i;
+  int length = strlen(src) - 1;
+  for(i=length; i>=0; i--){
+    dst[i] = src[i];
+ }
+  return dst;
+}
+
+char *istrncpy(char *dst, const char *src, size_t n){
+  if(dst && src == NULL){
+  }
+  
+  while(n>=0){
+    n--;
+    dst[n] = src[n];
+  }
+  return dst;
+}
+
 
 int main(){
-  istring_mk("Hej!");
+  char my_istring;
+  my_istring = istring_mk("Hej!");
+  char *arr[] = {};
+  puts(istrcpy(arr, my_istring));  
 }
 
 
