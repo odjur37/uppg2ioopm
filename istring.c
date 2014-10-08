@@ -10,17 +10,20 @@ char *istring_mk(const char* str){
     return NULL;
   }
   
-  char* istring = malloc(sizeof(int) + strlen(str));
+  char* istring = malloc(sizeof(int) + strlen(str) + 1);
   if (istring == NULL){
     exit(1);
   }
   
   int length;
   length = strlen(str);
-  char string_length[length];
+  char string_length[sizeof(int)+1] = {length,'\0'};
   strcpy(istring, string_length);
+  printf("%c is the length of str\n",*istring);
   strcpy((istring+4), str);
-  printf("%s\n", istring);
+  printf("%c is the complete istring\n",*istring);
+
+
   return istring;
 }
 
@@ -46,3 +49,5 @@ char *istring_to_string(const char *str){
 int main(){
   istring_mk("Hej!");
 }
+
+
