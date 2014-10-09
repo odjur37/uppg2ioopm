@@ -18,14 +18,6 @@ char *istring_mk(const char* str){
   int length;
   length = strlen(str);
   char string_length[sizeof(int)] = {'1','2','3'};
-  /* BITOPERATIONER HÄR
-
-     FYRA x 8 bitar, LOGIC ANDS FÖR ATT REPRESENTERA
-     LÄNGDEN PÅ STRÄNGEN
-  */
-
-
-
   strcpy(istring, string_length);
   strcpy(istring+4, str);
   return istring;
