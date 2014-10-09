@@ -17,11 +17,17 @@ char *istring_mk(const char* str){
   
   int length;
   length = strlen(str);
-  char string_length[sizeof(int)+1] = {length,'\0'};
+  char string_length[sizeof(int)] = {'1','2','3'};
+  /* BITOPERATIONER HÄR
+
+     FYRA x 8 bitar, LOGIC ANDS FÖR ATT REPRESENTERA
+     LÄNGDEN PÅ STRÄNGEN
+  */
+
+
+
   strcpy(istring, string_length);
-  strcpy((istring+4), str);
-
-
+  strcpy(istring+4, str);
   return istring;
 }
 
@@ -48,11 +54,11 @@ char *istrcpy(char *dst, const char *src){
     exit(1);
   }
   int i;
-  int length = strlen(src) - 1;
+  int length = strlen(src);
   for(i=length; i>=0; i--){
     dst[i] = src[i];
  }
-  printf("%c\n",*dst);
+  printf("%s\n",dst);
   return dst;
 }
 
@@ -71,6 +77,7 @@ char *istrcpy(char *dst, const char *src){
 int main(){
   char *my_istring;
   my_istring = istring_mk("Hej!");
+  printf("My string:%s\n", my_istring);
   char *arr[] = {};
   printf("Here is the copied string:%s\n",istrcpy(*arr, my_istring));  
 }
