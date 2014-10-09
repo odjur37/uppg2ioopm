@@ -19,9 +19,7 @@ char *istring_mk(const char* str){
   length = strlen(str);
   char string_length[sizeof(int)+1] = {length,'\0'};
   strcpy(istring, string_length);
-  printf("%c is the length of str\n",*istring);
   strcpy((istring+4), str);
-  printf("%c is the complete istring\n",*istring);
 
 
   return istring;
@@ -47,16 +45,18 @@ char *istring_to_string(const char *str){
 
 char *istrcpy(char *dst, const char *src){
   if(dst && src == NULL){
+    exit(1);
   }
   int i;
   int length = strlen(src) - 1;
   for(i=length; i>=0; i--){
     dst[i] = src[i];
  }
+  printf("%c\n",*dst);
   return dst;
 }
 
-char *istrncpy(char *dst, const char *src, size_t n){
+/*char *istrncpy(char *dst, const char *src, size_t n){
   if(dst && src == NULL){
   }
   
@@ -65,14 +65,14 @@ char *istrncpy(char *dst, const char *src, size_t n){
     dst[n] = src[n];
   }
   return dst;
-}
+  }*/
 
 
 int main(){
-  char my_istring;
+  char *my_istring;
   my_istring = istring_mk("Hej!");
   char *arr[] = {};
-  puts(istrcpy(arr, my_istring));  
+  printf("Here is the copied string:%s\n",istrcpy(*arr, my_istring));  
 }
 
 
