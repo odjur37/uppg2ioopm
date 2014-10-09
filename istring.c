@@ -1,9 +1,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-/*#define START 1
-#define STRING 2
-*/
+#define START(x) (x+sizeof(int))
+#define STRING(x) (x-sizeof(int))
+
 
 char *istring_mk(const char* str){
   if (str == NULL){
@@ -15,20 +15,16 @@ char *istring_mk(const char* str){
     exit(1);
   }
   
-  int length;
-  length = strlen(str);
-  char string_length[sizeof(int)] = {'1','2','3'};
-  strcpy(istring, string_length);
-  strcpy(istring+4, str);
-  return istring;
+  *((int*) istring) = strlen(str);
+  strcpy(START(istring), str);
+  return START(istring);
 }
+
 
 void istring_rm(char *str){
   free(str);
   str = NULL;
 }
-
-
 
 
 char *istring_to_string(const char *str){
@@ -42,16 +38,13 @@ char *istring_to_string(const char *str){
 }
 
 char *istrcpy(char *dst, const char *src){
-  if(dst && src == NULL){
-    exit(1);
-  }
   int i;
-  int length = strlen(src);
-  for(i=length; i>=0; i--){
-    dst[i] = src[i];
- }
-  printf("%s\n",dst);
-  return dst;
+  int length = *((int*)(STRING(src)));
+  *((int*) dst) = length;
+  for(i=0; i<=length; i++){
+    dst[START(i)] = src[i];
+  }
+  return START(dst);
 }
 
 /*char *istrncpy(char *dst, const char *src, size_t n){
@@ -70,8 +63,8 @@ int main(){
   char *my_istring;
   my_istring = istring_mk("Hej!");
   printf("My string:%s\n", my_istring);
-  char *arr[] = {};
-  printf("Here is the copied string:%s\n",istrcpy(*arr, my_istring));  
+  char arr[45];
+  printf("Here is the copied string:%s\n",istrcpy(arr, my_istring));  
 }
 
 
