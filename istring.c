@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define START(x) (x+sizeof(int))
-#define STRING(x) (x-sizeof(int))
+#define START(x) ((int*)(((char*)x)-sizeof(int)))
+#define STRING(x) ((char*)(((char*)x)+sizeof(int)))
 
 
 char *istring_mk(const char* str){
@@ -16,8 +16,8 @@ char *istring_mk(const char* str){
   }
   
   *((int*) istring) = strlen(str);
-  strcpy(START(istring), str);
-  return START(istring);
+  strcpy(STRING(istring), str);
+  return STRING(istring);
 }
 
 
@@ -28,7 +28,7 @@ void istring_rm(char *str){
 
 
 char *istring_to_string(const char *str){
-  int length = *(int *) (str - sizeof(int));
+  int length = *((START(str)));
   char *temp = malloc(length);
   strncpy(temp, str, length);
   int tempint;
@@ -37,34 +37,45 @@ char *istring_to_string(const char *str){
   return temp;
 }
 
+size_t istrfixlen(char *s){
+  if (START(s) != strlen(s)){
+    *(START(s)) = strlen(s);
+    return strlen(s);
+  }
+
+
+
 char *istrcpy(char *dst, const char *src){
   int i;
-  int length = *((int*)(STRING(src)));
+  int length = *(START(src));
   *((int*) dst) = length;
   for(i=0; i<=length; i++){
-    dst[START(i)] = src[i];
+    dst[sizeof(int)+(i)] = src[i];
   }
-  return START(dst);
+  return STRING(dst);
 }
 
-/*char *istrncpy(char *dst, const char *src, size_t n){
-  if(dst && src == NULL){
-  }
-  
-  while(n>=0){
+char *istrncpy(char *dst, const char *src, size_t n){
+  int length = *(START(src));
+  *((int*) dst) = length;
+  while(n>0){
+    dst[sizeof(int)+(n)] = src[n];
     n--;
-    dst[n] = src[n];
   }
-  return dst;
-  }*/
+  return STRING(dst);
+}
 
 
 int main(){
-  char *my_istring;
-  my_istring = istring_mk("Hej!");
-  printf("My string:%s\n", my_istring);
-  char arr[45];
-  printf("Here is the copied string:%s\n",istrcpy(arr, my_istring));  
+  /*char *my_istring = istring_mk("Hej!");
+  printf("My first string: %s\n", my_istring);
+  char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!");
+  printf("Converted string: %s\n", my_converted_istring);*/
+  char arr[40];
+  char* temp = istring_mk("UNIX");
+  printf("%d\n", *(START(temp)));
+  char *my_copy_istring = istrcpy(arr, temp);
+  printf("My copy: %s\n", my_copy_istring);
 }
 
 
