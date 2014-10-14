@@ -37,12 +37,14 @@ char *istring_to_string(const char *str){
   return temp;
 }
 
-/*
-  size_t istrfixlen(char *s){
-if (START(s) != strlen(s)){
-  *(START(s)) = strlen(s);
+
+
+/*size_t istrfixlen(char *s){
+  if (START(s) != strlen(s)){
+    *(START(s)) = strlen(s);
     return strlen(s);
-    }
+  }
+
 */
 
 
