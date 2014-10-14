@@ -39,14 +39,24 @@ char *istring_to_string(const char *str){
 
 
 
-/*size_t istrfixlen(char *s){
-  if (START(s) != strlen(s)){
-    *(START(s)) = strlen(s);
-    return strlen(s);
+size_t istrfixlen(char *s){
+  if (s[strlen(s)+1] != '\0'){
+    s[strlen(s)+1] = '\0';
   }
+  if (*(START(s)) != strlen(s)){
+    *(START(s)) = strlen(s);
+  }
+  return *(START(s));
+}
 
-*/
-
+char* istrslen(char *s, size_t length){
+  s[*(START(s))] = (int)length;
+  while (length != strlen(s)) {
+    s[strlen(s)+1] = s[strlen(s)];
+  }
+  s[length+1] = '\0';
+  return s;
+}
 
 char *istrcpy(char *dst, const char *src){
   int i;
