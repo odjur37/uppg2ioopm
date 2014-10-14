@@ -108,14 +108,14 @@ char *istrncat(char *dst, const char *src, size_t n){
 
 int main(){
   /*char *my_istring = istring_mk("Hej!");
-  printf("My first string: %s\n", my_istring);
+  /*printf("My first string: %s\n", my_istring);
   char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!");
-  printf("Converted string: %s\n", my_converted_istring);*/
+  printf("Converted string: %s\n", my_converted_istring);
   char arr[40];
   char* temp = istring_mk("UNIX");
   printf("%d\n", *(START(temp)));
   char *my_copy_istring = istrcpy(arr, temp);
-  printf("My copy: %s\n", my_copy_istring);
+  printf("My copy: %s\n", my_copy_istring);*/
 }
 
 
