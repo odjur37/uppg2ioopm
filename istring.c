@@ -37,12 +37,13 @@ char *istring_to_string(const char *str){
   return temp;
 }
 
-size_t istrfixlen(char *s){
-  if (START(s) != strlen(s)){
-    *(START(s)) = strlen(s);
+/*
+  size_t istrfixlen(char *s){
+if (START(s) != strlen(s)){
+  *(START(s)) = strlen(s);
     return strlen(s);
-  }
-
+    }
+*/
 
 
 char *istrcpy(char *dst, const char *src){
@@ -65,6 +66,33 @@ char *istrncpy(char *dst, const char *src, size_t n){
   return STRING(dst);
 }
 
+char *istrchr(const char *s, int c){
+  return strchr(s, c);
+}
+
+char *istrrchr(const char *s, int c){
+  return strrchr(s, c);
+}
+
+int istrcmp(const char *s1, const char *s2){
+  return strcmp(s1, s2);
+}
+
+int istrncmp(const char *s1, const char *s2, size_t n){
+  return strncmp(s1, s2, n);
+}
+
+size_t istrlen(const char *s){
+  return strlen(s);
+}
+
+char *istrcat(char *dst, const char *src){
+  return  strcat(dst, src);
+}
+
+char *istrncat(char *dst, const char *src, size_t n){
+  return strncat(dst, src, n);
+}
 
 int main(){
   /*char *my_istring = istring_mk("Hej!");
