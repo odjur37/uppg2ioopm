@@ -1,5 +1,7 @@
 #ifndef ISTRING_H
 #define ISTRING_H
+#define START(x) ((int*)(((char*)x)-sizeof(int)))
+#define STRING(x) ((char*)(((char*)x)+sizeof(int)))
 
 #include <string.h>
 
@@ -32,7 +34,7 @@ char *istring_to_string(const char *str);
  * This function is useful when istrings have been manipulated as
  * regular C strings, to reestablish the length invariant.
  */
-size_t istrfixlen(char *s);
+size_t istrfixlen(char *str);
 
 /* 
  * Sets the length of an istring and inserts a corresponding '\0'
@@ -41,7 +43,9 @@ size_t istrfixlen(char *s);
  * string. The last character of the original string will be repeated
  * to fill the string to its given length.
  */
+
 char* istrslen(char *s, size_t length);
+
 
 /*
  * For definitions, see the manual page of respective function on the

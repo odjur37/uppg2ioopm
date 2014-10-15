@@ -22,7 +22,6 @@ char *istring_mk(const char* str){
 
 
 void istring_rm(char *str){
-  free(str);
   str = NULL;
 }
 
@@ -40,20 +39,24 @@ char *istring_to_string(const char *str){
 
 
 size_t istrfixlen(char *s){
-  if (s[strlen(s)+1] != '\0'){
-    s[strlen(s)+1] = '\0';
+  char *tmp = malloc(strlen(s)+1);
+  strcpy(tmp, s);
+  if (tmp[strlen(s)+1] != '\0'){
+    tmp[strlen(s)+1] = '\0';	
   }
-  if (*(START(s)) != strlen(s)){
-    *(START(s)) = strlen(s);
+  if (*(START(tmp)) != strlen(tmp)){
+    *(START(tmp)) = strlen(tmp);
   }
-  return *(START(s));
+  return *(START(tmp));
 }
 
 char* istrslen(char *s, size_t length){
   s[*(START(s))] = (int)length;
   while (length != strlen(s)) {
+    malloc(strlen(s)+1);
     s[strlen(s)+1] = s[strlen(s)];
   }
+  malloc(strlen(s)+1);
   s[length+1] = '\0';
   return s;
 }
@@ -71,9 +74,9 @@ char *istrcpy(char *dst, const char *src){
 char *istrncpy(char *dst, const char *src, size_t n){
   int length = *(START(src));
   *((int*) dst) = length;
-  while(n>0){
-    dst[sizeof(int)+(n)] = src[n];
-    n--;
+  dst[sizeof(int)+(n)+1] = '\0';
+  for(int i = 0; i <= n; i++){
+    dst[sizeof(int)+(i)] = src[i];
   }
   return STRING(dst);
 }
@@ -106,16 +109,17 @@ char *istrncat(char *dst, const char *src, size_t n){
   return strncat(dst, src, n);
 }
 
+/*
 int main(){
-  /*char *my_istring = istring_mk("Hej!");
+  char *my_istring = istring_mk("Hej!");
   printf("My first string: %s\n", my_istring);
   char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!");
-  printf("Converted string: %s\n", my_converted_istring);*/
+  printf("Converted string: %s\n", my_converted_istring);
   char arr[40];
   char* temp = istring_mk("UNIX");
   printf("%d\n", *(START(temp)));
-  char *my_copy_istring = istrcpy(arr, temp);
-  printf("My copy: %s\n", my_copy_istring);
-}
+  char *my_n_copy_istring = istrncpy(arr, temp, 3);
+  printf("My copy: %s\n", my_n_copy_istring);
+  }*/
 
 
