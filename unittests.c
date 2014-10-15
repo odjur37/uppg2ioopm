@@ -146,10 +146,11 @@ void testISTRCPY(void)
 void testISTRNCPY(void)
 {
   char *str1 = istring_mk("spam");
-    char arr2[40];
-    CU_ASSERT(istrcmp((istrncpy(arr2, str1, 4)), str1) == 0);
-    CU_ASSERT(istrcmp((istrncpy(arr2, str1, 3)), ['s','p','a','\0']) == 0);
-    istring_rm(str1);
+  char *str2 = istring_mk("spa");
+  char arr1[40];
+  char arr2[40];
+  CU_ASSERT(istrcmp((istrncpy(arr1, str1, 4)), str1) == 0);
+  CU_ASSERT(istrcmp((istrncpy(arr2, str1, 3)), str2) == 0);
 }
 
 int main()

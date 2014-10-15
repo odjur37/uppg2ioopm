@@ -74,10 +74,10 @@ char *istrcpy(char *dst, const char *src){
 char *istrncpy(char *dst, const char *src, size_t n){
   int length = *(START(src));
   *((int*) dst) = length;
-  dst[sizeof(int)+(n)+1] = '\0';
-  for(int i = 0; i <= n; i++){
+  for(int i = 0; i < n; i++){
     dst[sizeof(int)+(i)] = src[i];
   }
+  dst[sizeof(int)+(n)] = '\0';
   return STRING(dst);
 }
 
@@ -109,16 +109,15 @@ char *istrncat(char *dst, const char *src, size_t n){
   return strncat(dst, src, n);
 }
 
-/*
-int main()
-  char *my_istring = istring_mk("Hej!");
-  printf("My first string: %s\n", my_istring);
-  char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!");
-  printf("Converted string: %s\n", my_converted_istring);
-  char arr[40];
-  char* temp = istring_mk("UNIX");
-  printf("%d\n", *(START(temp)));
-  char *my_n_copy_istring = istrncpy(arr, temp, 3);
-  printf("My copy: %s\n", my_n_copy_istring);
-  }*/
 
+/* int main(){ */
+/*   char *my_istring = istring_mk("Hej!"); */
+/*   printf("My first string: %s\n", my_istring); */
+/*   char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!"); */
+/*   printf("Converted string: %s\n", my_converted_istring); */
+/*   char arr[40]; */
+/*   char* temp = istring_mk("UNIX"); */
+/*   printf("%d\n", *(START(temp))); */
+/*   char *my_n_copy_istring = istrncpy(arr, temp, 4); */
+/*   printf("My copy: %s\n", my_n_copy_istring); */
+/*   } */
