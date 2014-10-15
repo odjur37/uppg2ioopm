@@ -110,7 +110,7 @@ char *istrncat(char *dst, const char *src, size_t n){
 }
 
 /*
-int main(){
+int main()
   char *my_istring = istring_mk("Hej!");
   printf("My first string: %s\n", my_istring);
   char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!");
@@ -121,5 +121,4 @@ int main(){
   char *my_n_copy_istring = istrncpy(arr, temp, 3);
   printf("My copy: %s\n", my_n_copy_istring);
   }*/
-
 
