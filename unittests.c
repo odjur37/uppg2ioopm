@@ -70,13 +70,16 @@ void testISTRING_TO_STRING(void)
   istring_rm(str1);
 }
 
-/*
+
 void testISTRCAT(void)
 {
-  // You must implement you own!
-  CU_FAIL("Test not implemented yet");
+  char *str1 = istring_mk("Bacon is ");
+  char *str2 = istring_mk("good for you");
+  char *str3 = istring_mk("Bacon is good for you");
+  CU_ASSERT(istrcmp((istrcat(str1, str2)), str3) == 0);
 }
 
+/*
 void testISTRNCAT(void)
 {
   // You must implement you own!
@@ -178,30 +181,30 @@ int main()
 
   /* add the tests to the suites */
   if (
-    (NULL == CU_add_test(pSuite1, "test of istring_mk()", testISTRING_MK)) ||
-    (NULL == CU_add_test(pSuite1, "test of istring_rm()", testISTRING_RM)) ||
+      (NULL == CU_add_test(pSuite1, "test of istring_mk()", testISTRING_MK)) ||
+      (NULL == CU_add_test(pSuite1, "test of istring_rm()", testISTRING_RM)) ||
     (NULL == CU_add_test(pSuite1, "test of istring_to_string()", testISTRING_TO_STRING))/* ||
-     (NULL == CU_add_test(pSuite1, "test of istrlen()", testISTRLEN))*/
+											   (NULL == CU_add_test(pSuite1, "test of istrlen()", testISTRLEN))*/
       )
     {
       CU_cleanup_registry();
       return CU_get_error();
     }
-
+  
   if (
-      /* (NULL == CU_add_test(pSuite2, "test of istrcat()", testISTRCAT)) ||
-	 (NULL == CU_add_test(pSuite2, "test of istrncat()", testISTRNCAT)) ||*/
-    (NULL == CU_add_test(pSuite2, "test of istrchr()", testISTRCHR)) ||
-    (NULL == CU_add_test(pSuite2, "test of istrrchr()", testISTRRCHR)) ||
-    (NULL == CU_add_test(pSuite2, "test of istrcmp()", testISTRCMP)) ||
-    (NULL == CU_add_test(pSuite2, "test of istrncmp()", testISTRNCMP)) ||
-    (NULL == CU_add_test(pSuite2, "test of istrcpy()", testISTRCPY)) ||
-    (NULL == CU_add_test(pSuite2, "test of istrncpy()", testISTRNCPY)))
+      (NULL == CU_add_test(pSuite2, "test of istrcat()", testISTRCAT)) ||
+      /* (NULL == CU_add_test(pSuite2, "test of istrncat()", testISTRNCAT)) ||*/
+      (NULL == CU_add_test(pSuite2, "test of istrchr()", testISTRCHR)) ||
+      (NULL == CU_add_test(pSuite2, "test of istrrchr()", testISTRRCHR)) ||
+      (NULL == CU_add_test(pSuite2, "test of istrcmp()", testISTRCMP)) ||
+      (NULL == CU_add_test(pSuite2, "test of istrncmp()", testISTRNCMP)) ||
+      (NULL == CU_add_test(pSuite2, "test of istrcpy()", testISTRCPY)) ||
+      (NULL == CU_add_test(pSuite2, "test of istrncpy()", testISTRNCPY)))
     {
       CU_cleanup_registry();
       return CU_get_error();
     }
-
+  
   /* Run all tests using the CUnit Basic interface */
   CU_basic_set_mode(CU_BRM_VERBOSE);
   CU_basic_run_tests();
