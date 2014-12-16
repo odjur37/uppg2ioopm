@@ -90,7 +90,7 @@ char *istrrchr(const char *s, int c){
 }
 
 int istrcmp(const char *s1, const char *s2){
-  return strcmp(s1, s2);
+  return strcmp(s1,s2);
 }
 
 int istrncmp(const char *s1, const char *s2, size_t n){
@@ -102,7 +102,7 @@ size_t istrlen(const char *s){
 }
 
 char *istrcat(char *dst, const char *src){
-  return  strcat(dst, src);
+  return  strcat(dst,src);
 }
 
 char *istrncat(char *dst, const char *src, size_t n){
@@ -111,13 +111,8 @@ char *istrncat(char *dst, const char *src, size_t n){
 
 
 /* int main(){ */
-/*   char *my_istring = istring_mk("Hej!"); */
-/*   printf("My first string: %s\n", my_istring); */
-/*   char *my_converted_istring = istring_to_string("Bakåtkonverterad sträng!"); */
-/*   printf("Converted string: %s\n", my_converted_istring); */
-/*   char arr[40]; */
-/*   char* temp = istring_mk("UNIX"); */
-/*   printf("%d\n", *(START(temp))); */
-/*   char *my_n_copy_istring = istrncpy(arr, temp, 4); */
-/*   printf("My copy: %s\n", my_n_copy_istring); */
-/*   } */
+/*   char *my_istr = istring_mk("Hej "); */
+/*   char *my_istr_cat = istring_mk("på dig"); */
+/*   char *cat_istr = istrcat(my_istr, my_istr_cat); */
+/*   printf("%s\n",cat_istr); */
+/* } */

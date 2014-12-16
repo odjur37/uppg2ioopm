@@ -76,7 +76,9 @@ void testISTRCAT(void)
   char *str1 = istring_mk("Bacon is ");
   char *str2 = istring_mk("good for you");
   char *str3 = istring_mk("Bacon is good for you");
-  CU_ASSERT(istrcmp((istrcat(str1, str2)), str3) == 0);
+  char *str_to_comp = istrcat(str1, str2);
+  printf("%s\n",str_to_comp);
+  CU_ASSERT(istrcmp(str_to_comp, str3) == 0);
 }
 
 /*
